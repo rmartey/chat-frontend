@@ -33,7 +33,15 @@ function AllUsers({ currentUserId, closeModal, setCurrentChat }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div
+      id="modal"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={(event) => {
+        if (event.target.id === "modal") {
+          closeModal();
+        }
+      }}
+    >
       <div className="flex flex-col gap-4 bg-white p-10 rounded-lg">
         <p className="text-xl text-black">Select User</p>
         {users?.map((user) => (

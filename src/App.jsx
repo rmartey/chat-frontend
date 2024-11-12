@@ -69,6 +69,11 @@ function App() {
     return online ? true : false;
   };
 
+  const checkActiveChat = (chat) => {
+    const activeChat = chat?._id === currentChat?._id;
+    return activeChat;
+  };
+
   const closeModal = () => {
     setShowAllUsers(false);
   };
@@ -81,7 +86,7 @@ function App() {
       {!isLoading && !error && (
         <div className="flex h-screen">
           {/* Left side */}
-          <div className="w-1/4 bg-gray-800 text-white p-4">
+          <div className="w-1/4 bg-[#131313] text-white p-4">
             <h1 className="text-2xl font-bold mb-6">Chat App</h1>
             <div>
               <div className="flex justify-between">
@@ -114,6 +119,7 @@ function App() {
                       data={chat}
                       currentUserId={user?.sub}
                       online={checkOnlineStatus(chat)}
+                      checkActiveChat={checkActiveChat(chat)}
                     />
                   </div>
                 ))}
@@ -122,7 +128,7 @@ function App() {
           </div>
 
           {/* Right side */}
-          <div className="w-3/4 h-full bg-white p-4">
+          <div className="w-3/4 h-full bg-[#1f2229]">
             <ChatBox
               chat={currentChat}
               currentUser={user?.sub}

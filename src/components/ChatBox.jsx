@@ -75,22 +75,22 @@ function ChatBox({ chat, currentUser, setSendMessage, receiveMessage }) {
     <div className="w-full h-full">
       {chat ? (
         <div className="h-full flex flex-col gap-5">
-          <div className="flex items-center bg-gray-100 rounded-md p-2 border-b-2 border-b-black">
+          <div className="flex items-center py-4 px-10 shadow-2xl">
             <img
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="rounded-full"
               src={userData?.picture}
               alt={userData?.name}
             />
             <div className="ml-5">
-              <h1 className="text-black">{userData?.name}</h1>
+              <h1 className="text-white font-bold text-lg">{userData?.name}</h1>
               {/* <p className="text-black">{online ? "online" : "offline"}</p> */}
             </div>
           </div>
           {/* chat body */}
 
-          <div className="h-full overflow-y-scroll">
+          <div className="h-full overflow-y-scroll no-scrollbar px-5">
             {messages?.map((message) => (
               <div
                 ref={scroll}
@@ -104,19 +104,19 @@ function ChatBox({ chat, currentUser, setSendMessage, receiveMessage }) {
                 <div
                   className={`p-2 py-3 px-5 max-w-[500px] ${
                     message?.senderId === currentUser
-                      ? "bg-blue-100 text-right rounded-tr-3xl rounded-bl-3xl"
-                      : "bg-green-300 text-left rounded-tl-3xl rounded-br-3xl"
+                      ? "bg-[#6b8afd] text-white text-right rounded-tr-3xl rounded-bl-3xl"
+                      : "bg-[#3b3f47] text-white text-left rounded-tl-3xl rounded-br-3xl backdrop-filter backdrop-blur-2xl"
                   }`}
                 >
                   <p className="text-xl">{message?.text}</p>
-                  <p className="text-xs">{format(message?.createdAt)}</p>
+                  <p className="text-[8px]">{format(message?.createdAt)}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* chat sender */}
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center p-5 bg-white">
             <div>+</div>
             <InputEmoji
               value={newMessage}
